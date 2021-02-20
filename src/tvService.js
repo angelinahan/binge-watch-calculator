@@ -9,19 +9,34 @@ function to_url_format(query) {
     return lowercase.split(' ').join('-');
 }
 
-export const searchShow = (query) => {
-    const formattedQuery = to_url_format(query);
-    return fetch(`${searchUrl}${formattedQuery}`)
-    .then((result) => result.json())
-    .then((data) => {
-        return data;
-    })
 
-    // var xmlHttp = new XMLHttpRequest();
-    // xmlHttp.open( "GET", to_url_format(query), false ); // false for synchronous request
-    // xmlHttp.send( null );
-    // return xmlHttp.responseText;
+export function searchShow(query) {
+    let info;
+    let promise1 = fetch(`https://api.tvmaze.com/search/shows?q=girls`).then(response => {
+        return response.json();
+    })
+    let promise2 = promise1
+    .then(data => {
+        console.log(data[0]);
+        info = data;
+    }).then(result => {
+        return result
+    })
+    return promise2;
 }
+
+// export const searchShow = (query) => {
+//     const formattedQuery = to_url_format(query);
+//     let promise = fetch(`https://api.tvmaze.com/search/shows?q=girls`).then((result) => result.json())
+//     return promise
+//     }
+
+//     // var xmlHttp = new XMLHttpRequest();
+//     // xmlHttp.open( "GET", `https://api.tvmaze.com/search/shows?q=girls`, true ); // false for synchronous request
+//     // xmlHttp.send( null );
+//     // xmlHttp.then()
+//     // return xmlHttp.responseText;
+// }
 
 
 
