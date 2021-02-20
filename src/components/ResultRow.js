@@ -32,12 +32,13 @@ export const ResultRow = ({ show, selectedShowId, setShowId }) => {
     useEffect(() => {
         selected = selectedShowId === show.id;
     });
+    let year = `(` + show.premiered.substring(0, 4) + `)`;
     return (
         <>
             <ResultDiv selected={selectedShowId === show.id} onClick={() => setShowId(show.id)} >
                 <ResultImage src={imageUrl}></ResultImage>
                 <p>{show.name}</p>
-                <p>{show.premiered}</p>
+                <p>{year}</p>
             </ResultDiv>
         </>
     )
