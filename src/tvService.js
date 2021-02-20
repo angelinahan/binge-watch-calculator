@@ -10,19 +10,11 @@ function to_url_format(query) {
 }
 
 
-export function searchShow(query) {
-    let info;
-    let promise1 = fetch(`https://api.tvmaze.com/search/shows?q=girls`).then(response => {
+export async function searchShow(query) {
+    let result = await fetch(`https://api.tvmaze.com/search/shows?q=girls`).then(response => {
         return response.json();
     })
-    let promise2 = promise1
-    .then(data => {
-        console.log(data[0]);
-        info = data;
-    }).then(result => {
-        return result
-    })
-    return promise2;
+    return result;
 }
 
 // export const searchShow = (query) => {
