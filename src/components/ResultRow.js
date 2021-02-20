@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const ResultDiv = styled.div`
@@ -13,6 +14,8 @@ const ResultDiv = styled.div`
         background-color: pink;
         transition: 0.3s background-color;
     }
+    background-color: props => (props.selected ? pink : none);
+    transition: 0.3s background-color;
 `
 
 const ResultImage = styled.img`
@@ -20,15 +23,18 @@ const ResultImage = styled.img`
     width: auto;
 `
 
-export const ResultRow = ({ show }) => {
+export const ResultRow = ({ show, selectedShowId, setShowId }) => {
     let imageUrl = "https://media.comicbook.com/files/img/default-movie.png";
     if (show.image) {
         imageUrl = show.image.medium;
     };
-    // let year = show.premiered.slice(4);
+    let selected = false;
+    useEffect(() => {
+        selected = selectedShowId === show.id;
+    });
     return (
         <>
-            <ResultDiv>
+            <ResultDiv selected={selectedShowId === show.id} onClick={() => setShowId(show.id)} >
                 <ResultImage src={imageUrl}></ResultImage>
                 <p>{show.name}</p>
                 <p>{show.premiered}</p>

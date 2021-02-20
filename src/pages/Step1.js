@@ -44,7 +44,11 @@ export const Step1 = ( props ) => {
                 <ResultsDiv>
                 {
                     props.results.map(result =>
-                        <ResultRow key={result.show.id} show={result.show} onClick={() => props.setShowId(result.show.id)} />
+                        <ResultRow 
+                        key={result.show.id} 
+                        show={result.show} 
+                        selectedShowId={props.showId} 
+                        setShowId={props.setShowId}/>
                     )
                 }
                 </ResultsDiv>
