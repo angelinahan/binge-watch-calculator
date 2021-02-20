@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
-import { searchShow, showInfo } from '../tvService';
+import { searchShow, showInfo,to_episodes_map } from '../tvService';
  
 const Step1Container = styled.div`
     display: flex;
@@ -52,8 +52,7 @@ export const Step1 = ( props ) => {
                     )
                 }
                 </ResultsDiv>
-                <Button onClick={() => {(showInfo(props.showId).then(info => props.setShow(info))); 
-                console.log(props.show);
+                <Button onClick={() => {(showInfo(props.showId).then(info => props.setShow(to_episodes_map(info)))); 
                 props.setStep(2);}}>Next</Button>
             </Step1Container>
         </>

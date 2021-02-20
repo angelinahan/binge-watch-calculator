@@ -56,11 +56,11 @@ export const Step2 = ( props ) => {
                 <HorizontalDiv>
                     <SquareSelect onClick={() => props.setIsByDate(true)}>
                         <h3>I want to finish before this date:</h3>
-                        <Input type="date"></Input>
+                        <InputBox type="date" id="Watch By"></InputBox>
                     </SquareSelect>
                     <SquareSelect>
                         <h3>I want to watch this many episodes per day:</h3>
-                        <Input></Input>
+                        <InputBox type="Number" Rate></InputBox>
                     </SquareSelect>
                 </HorizontalDiv>
             </Step2Container>

@@ -30,6 +30,8 @@ export async function showInfo(ID) {
 }
 
 
+
+
 function minutes_watched_minutes_left(data) {
 
 }
@@ -47,7 +49,7 @@ function percentage_watched(data) {
 //{1: {Ep1Name: 47, Ep2Name: 51, Ep3Name: 46...}, 2: {youGetTheIdea}...}
 //But I was concered the map indexes don't work the same way, and then the episode
 // number wouldn't be implicit from the data
-function to_episodes_map(data) {
+export function to_episodes_map(data) {
     let results = {};
     for (let i = 0; i < data.length; i++) {
         let episode = data[i];
