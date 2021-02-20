@@ -49,7 +49,8 @@ export const Step1 = (props) => {
                                 key={result.show.id}
                                 show={result.show}
                                 selectedShowId={props.showId}
-                                setShowId={props.setShowId} />
+                                setShowId={props.setShowId}
+                                setShow={props.setShow} />
                         )
                     }
                 </ResultsDiv>
