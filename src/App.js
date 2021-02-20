@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 import { searchShow } from './tvService';
 import { ResultRow } from './components/ResultRow';
+import { Step1 } from './pages/Step1';
 
 function App() {
 const [query, setQuery] = useState("");
@@ -18,7 +19,8 @@ function keypress(ev) {
   return (
     <div className="App">
       <header className="App-header">
-        <input size="50" 
+        <Step1 results={searchResults} query={query} setQuery={setQuery} setSearchResults={setSearchResults} setShowId={setShowId}/>
+        {/* <input size="50" 
         onChange={(event) => setQuery(event.target.value)} 
         value={query} placeholder="Type the name of a show"></input>
         <button onClick={() => searchShow(query).then(data => setSearchResults(data))}>Search</button>
@@ -30,7 +32,7 @@ function keypress(ev) {
             <ResultRow key={result.show.id} show={result.show} onClick={() => setShowId(result.show.id)}/>
           )
           
-        }
+        } */}
       </header>
     </div>
   );
