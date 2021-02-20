@@ -6,22 +6,41 @@ import { ResultRow } from './components/ResultRow';
 import { Step1 } from './pages/Step1';
 
 function App() {
-const [query, setQuery] = useState("");
-const [searchResults, setSearchResults] = useState([]);
-const [showId, setShowId] = useState("");
-const [show, setShow] = useState([]);
-const [step, setStep] = useState(1);
+  const [query, setQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [showId, setShowId] = useState("");
+  const [show, setShow] = useState([]);
+  const [step, setStep] = useState(1);
 
-function keypress(ev) {
-  if (ev.key === "Enter") {
-    searchShow(query)
+  function keypress(ev) {
+    if (ev.key === "Enter") {
+      searchShow(query)
+    }
   }
-}
 
   return (
     <div className="App">
       <header className="App-header">
-        <Step1 results={searchResults} query={query} setQuery={setQuery} setSearchResults={setSearchResults} setShowId={setShowId} showId={showId} setStep={setStep} />
+        {
+          step === 1 &&
+          <Step1
+            results={searchResults}
+            query={query}
+            setQuery={setQuery}
+            setSearchResults={setSearchResults}
+            setShowId={setShowId}
+            showId={showId}
+            setStep={setStep} />
+        }
+        {
+          step === 2 &&
+          <p>Hi from Step 2</p>
+        }
+        {
+          step === 3 &&
+          <p>Hi from Step 3</p>
+        }
+
         {/* <Step2 results={searchResults} setShow={setShow}/> */}
       </header>
     </div>
