@@ -32,7 +32,10 @@ export const ResultRow = ({ show, selectedShowId, setShowId }) => {
     useEffect(() => {
         selected = selectedShowId === show.id;
     });
-    let year = `(` + show.premiered.substring(0, 4) + `)`;
+    let year = '';
+    if (show.premiered) {
+        year = `(` + show.premiered.substring(0, 4) + `)`;
+    }
     return (
         <>
             <ResultDiv selected={selectedShowId === show.id} onClick={() => setShowId(show.id)} >
