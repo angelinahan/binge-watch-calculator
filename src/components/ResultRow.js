@@ -25,13 +25,13 @@ export const ResultRow = ({ show }) => {
     if (show.image) {
         imageUrl = show.image.medium;
     };
-    // let year = show.premiered.slice(4);
+    let year = `(` + show.premiered.substring(0, 4) + `)`;
     return (
         <>
             <ResultDiv>
                 <ResultImage src={imageUrl}></ResultImage>
                 <p>{show.name}</p>
-                <p>{show.premiered}</p>
+                <p>{year}</p>
             </ResultDiv>
         </>
     )
