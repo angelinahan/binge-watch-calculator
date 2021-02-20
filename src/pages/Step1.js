@@ -52,7 +52,8 @@ export const Step1 = ( props ) => {
                     )
                 }
                 </ResultsDiv>
-                <Button onClick={() => {showInfo(props.showId); 
+                <Button onClick={() => {(showInfo(props.showId).then(info => props.setShow(info))); 
+                console.log(props.show);
                 props.setStep(2);}}>Next</Button>
             </Step1Container>
         </>

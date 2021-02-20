@@ -21,7 +21,7 @@ function keypress(ev) {
   return (
     <div className="App">
       <header className="App-header">
-        <Step1 results={searchResults} query={query} setQuery={setQuery} setSearchResults={setSearchResults} setShowId={setShowId} showId={showId} setStep={setStep} />
+        <Step1 results={searchResults} query={query} setQuery={setQuery} setSearchResults={setSearchResults} setShowId={setShowId} showId={showId} setShow={setShow} setStep={setStep} show={show}/>
         {/* <Step2 results={searchResults} setShow={setShow}/> */}
       </header>
     </div>

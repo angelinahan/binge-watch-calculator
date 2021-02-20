@@ -22,7 +22,7 @@ export async function searchShow(query) {
 //With data from http://api.tvmaze.com/shows/{show_id}/episodes
 export async function showInfo(ID) {
     console.log(ID);
-    let url = `http://api.tvmaze.com/shows/318/episodes`
+    let url = `http://api.tvmaze.com/shows/${ID}/episodes`
     let result = await fetch(url).then(response => {
         return response.json();
     })
