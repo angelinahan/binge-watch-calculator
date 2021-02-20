@@ -1,6 +1,9 @@
+import { tvmaze } from 'tvmaze-api-ts'
+
 //format: /search/shows?q=:query
 
 const searchUrl = " http://api.tvmaze.com/search/shows?q=";
+
 
 const showUrl = "";
 
@@ -11,18 +14,22 @@ function to_url_format(query) {
 
 
 export function searchShow(query) {
-    let info;
-    let promise1 = fetch(`https://api.tvmaze.com/search/shows?q=girls`).then(response => {
-        return response.json();
-    })
-    let promise2 = promise1
-    .then(data => {
-        console.log(data[0]);
-        info = data;
-    }).then(result => {
-        return result
-    })
-    return promise2;
+    // let info;
+    // let promise1 = fetch(`https://api.tvmaze.com/search/shows?q=girls`).then(response => {
+    //     return response.json();
+    // })
+    // let promise2 = promise1
+    // .then(data => {
+    //     console.log(data[0]);
+    //     info = data;
+    // })
+
+    // return promise2;
+    const formattedQuery = to_url_format(query);
+    console.log(formattedQuery);
+    tvmaze.search.shows(formattedQuery).then(result => { 
+        console.log(result)
+        return result })
 }
 
 // export const searchShow = (query) => {
