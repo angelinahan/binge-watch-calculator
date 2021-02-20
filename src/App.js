@@ -10,8 +10,10 @@ function App() {
   const [query, setQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [showId, setShowId] = useState("");
+  const [showEpisodes, setShowEpisodes] = useState([]);
   const [show, setShow] = useState([]);
   const [step, setStep] = useState(1);
+  const [startEp, setStartEp] = useState([]);
 
   function keypress(ev) {
     if (ev.key === "Enter") {
@@ -32,11 +34,16 @@ function App() {
             setShowId={setShowId}
             showId={showId}
             setStep={setStep}
-            setShow={setShow} />
+            setShowEpisodes={setShowEpisodes} 
+            setShow={setShow}/>
         }
         {
-          step === 2 && console.log(show) &&
-          <p>Hi from Step 2</p>
+          step === 2 && 
+          <Step2
+            show={show}
+
+
+          />
         }
         {
           step === 3 &&

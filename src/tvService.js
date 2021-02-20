@@ -18,11 +18,15 @@ export async function searchShow(query) {
     return result;
 }
 
+const episodesPrefix = "http://api.tvmaze.com/shows/"
+const episodesSuffix = "/episodes"
 
 //With data from http://api.tvmaze.com/shows/{show_id}/episodes
 export async function showInfo(ID) {
+    var idString = ID + ''
     console.log(ID);
-    let url = `http://api.tvmaze.com/shows/${ID}/episodes`
+    console.log(idString);
+    let url = episodesPrefix + ID + episodesSuffix + ``;
     let result = await fetch(url).then(response => {
         return response.json();
     })

@@ -44,17 +44,17 @@ export const Step2 = ( props ) => {
         <>
             <Step2Container>
                 <HorizontalDiv>
-                    <TVImage src={props.image.medium}></TVImage>
+                    {<TVImage src={props.show.image.medium}></TVImage>}
                     <h2>{props.show.name}</h2>
                 </HorizontalDiv>
                 <p>I am about to start episode </p>
-                <InputBox value={props.startEpisode} onChange={(event) => props.setStartEpisode(event.target.value)}></InputBox>
+                <InputBox /*onChange={(event) => props.setStartEpisode(event.target.value)}*/></InputBox>
                 <p>I want to watch until episode</p>
-                <InputBox value={props.endEpisode} onChange={(event) => props.setEndEpisode(event.target.value)}></InputBox>
+                <InputBox /*onChange={(event) => props.setEndEpisode(event.target.value)}*/></InputBox>
                 <Button>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
-                    <SquareSelect onClick={() => props.setIsByDate(true)}>
+                    <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
                         <h3>I want to finish before this date:</h3>
                         <InputBox type="date" id="Watch By"></InputBox>
                     </SquareSelect>

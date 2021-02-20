@@ -24,7 +24,7 @@ const ResultImage = styled.img`
     width: auto;
 `
 
-export const ResultRow = ({ show, selectedShowId, setShowId }) => {
+export const ResultRow = ({ show, selectedShowId, setShowId, setShow }) => {
     let imageUrl = "https://media.comicbook.com/files/img/default-movie.png";
     if (show.image) {
         imageUrl = show.image.medium;
@@ -35,7 +35,10 @@ export const ResultRow = ({ show, selectedShowId, setShowId }) => {
     }
     return (
         <>
-            <ResultDiv selected={selectedShowId === show.id ? 'pink' : 'none'} onClick={() => setShowId(show.id)} >
+            <ResultDiv selected={selectedShowId === show.id ? 'pink' : 'none'} onClick={() => 
+                {setShowId(show.id);
+                setShow(show);
+            }} >
                 {
                     console.log(selectedShowId === show.id)
                 }
