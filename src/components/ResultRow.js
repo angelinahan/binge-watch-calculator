@@ -6,7 +6,6 @@ const ResultDiv = styled.div`
     height: 50px;
     padding: 10px;
     display: flex;
-    overflow: ...;
     justify-content: space-between;
     border-radius: 5px;
     cursor: pointer;
@@ -14,7 +13,7 @@ const ResultDiv = styled.div`
         background-color: pink;
         transition: 0.3s background-color;
     }
-    background-color: props => (props.selected ? pink : none);
+    background-color: ${props => (props.selected ? props.selected : 'none')};
     transition: 0.3s background-color;
 `
 
@@ -28,17 +27,16 @@ export const ResultRow = ({ show, selectedShowId, setShowId }) => {
     if (show.image) {
         imageUrl = show.image.medium;
     };
-    let selected = false;
-    useEffect(() => {
-        selected = selectedShowId === show.id;
-    });
     let year = '';
     if (show.premiered) {
         year = `(` + show.premiered.substring(0, 4) + `)`;
     }
     return (
         <>
-            <ResultDiv selected={selectedShowId === show.id} onClick={() => setShowId(show.id)} >
+            <ResultDiv selected={selectedShowId === show.id ? 'pink' : 'none'} onClick={() => setShowId(show.id)} >
+                {
+                    console.log(selectedShowId === show.id)
+                }
                 <ResultImage src={imageUrl}></ResultImage>
                 <p>{show.name}</p>
                 <p>{year}</p>
