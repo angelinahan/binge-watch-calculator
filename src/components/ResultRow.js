@@ -2,10 +2,12 @@ import { useEffect } from 'react';
 import styled from 'styled-components';
 
 const ResultDiv = styled.div`
+display: flex;
     border: 1px solid white;
     height: 50px;
-    padding: 10px;
+    padding: 5px;
     display: flex;
+    width: 40vw;
     justify-content: space-between;
     border-radius: 5px;
     cursor: pointer;
