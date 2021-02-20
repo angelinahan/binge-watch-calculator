@@ -36,7 +36,8 @@ function percentage_watched(data) {
 //{1: [[Ep1Name, 47], [Ep2Name, 51], [Ep3Name: 46]...], 2: [youGetTheIdea]..., ...}
 //I considered doing something like 
 //{1: {Ep1Name: 47, Ep2Name: 51, Ep3Name: 46...}, 2: {youGetTheIdea}...}
-//But I was concered the map indexes don't work the same way 
+//But I was concered the map indexes don't work the same way, and then the episode
+// number wouldn't be implicit from the data
 function to_episodes_map(data) {
     let results = {};
     for (let i = 0; i < data.length; i++) {
@@ -50,9 +51,8 @@ function to_episodes_map(data) {
         else {
             results[season].push([title, runtime]);
         }
-
-
     }
+    return results;
 }
 
 
