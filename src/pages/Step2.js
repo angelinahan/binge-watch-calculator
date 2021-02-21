@@ -47,10 +47,22 @@ export const Step2 = ( props ) => {
                     {<TVImage src={props.show.image.medium}></TVImage>}
                     <h2>{props.show.name}</h2>
                 </HorizontalDiv>
-                <p>I am about to start episode </p>
-                <InputBox /*onChange={(event) => props.setStartEpisode(event.target.value)}*/></InputBox>
-                <p>I want to watch until episode</p>
-                <InputBox /*onChange={(event) => props.setEndEpisode(event.target.value)}*/></InputBox>
+                <p>I am about to start season</p>
+                <InputBox 
+                value={props.startSeason}
+                onChange={(event) => props.setStartSeason(event.target.value)}></InputBox>
+                <p>episode</p>
+                <InputBox 
+                value={props.startEp}
+                onChange={(event) => props.setStartEp(event.target.value)}></InputBox>
+                <p>I want to watch until season</p>
+                <InputBox 
+                value={props.endSeason}
+                onChange={(event) => props.setEndSeason(event.target.value)}></InputBox>
+                <p>episode</p>
+                <InputBox 
+                value={props.endEp}
+                onChange={(event) => props.setEndEp(event.target.value)}></InputBox>
                 <Button>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>

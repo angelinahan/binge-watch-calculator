@@ -4,7 +4,7 @@ import { searchShow, showInfo,to_episodes_map } from '../tvService';
  
 const Step1Container = styled.div`
     display: flex;
-    margin: 20vh 5vw;
+    margin: 20vh 0;
     flex-direction: column;
     align-items: center;
 `
@@ -12,6 +12,7 @@ const Step1Container = styled.div`
 const SearchBarDiv = styled.div`
     display: flex;
     flex-direction: row;
+    width: 41%;
 `
 
 const SearchBar = styled.input`
@@ -28,14 +29,21 @@ const Button = styled.button`
 
 const ResultsDiv = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     border-radius: 5px;
+    max-height: 310px;
+    width: 100%;
+    margin: 5vh auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 `
 
 export const Step1 = (props) => {
     return (
         <>
             <Step1Container>
+                <p>Search and select your show to begin:</p>
                 <SearchBarDiv>
                     <SearchBar size="50"
                         onChange={(event) => props.setQuery(event.target.value)}

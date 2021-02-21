@@ -13,7 +13,11 @@ function App() {
   const [showEpisodes, setShowEpisodes] = useState([]);
   const [show, setShow] = useState([]);
   const [step, setStep] = useState(1);
-  const [startEp, setStartEp] = useState([]);
+  const [startEp, setStartEp] = useState('');
+  const [startSeason, setStartSeason] = useState('');
+  const [endEp, setEndEp] = useState('');
+  const [endSeason, setEndSeason] = useState('');
+
 
   function keypress(ev) {
     if (ev.key === "Enter") {
@@ -41,8 +45,14 @@ function App() {
           step === 2 && 
           <Step2
             show={show}
-
-
+            startEp={startEp}
+            setStartEp={setStartEp}
+            startSeason={startSeason}
+            setStartSeason={setStartSeason}
+            endEp={endEp}
+            setEndEp={setEndEp}
+            endSeason={endSeason}
+            setEndSeason={setEndSeason}
           />
         }
         {
