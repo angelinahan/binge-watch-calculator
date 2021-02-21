@@ -68,12 +68,12 @@ export const Step2 = ( props ) => {
                 <InputNum 
                 value={props.endEp}
                 onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
-                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, endDate, props.showEpisodes)}>Calculate!</Button>
+                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes)}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
                     <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
                         <h3>I want to finish before this date:</h3>
-                        <InputBox type="date" id="Watch By"></InputBox>
+                        <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
                     <SquareSelect>
                         <h3>I want to watch this many episodes per day:</h3>

@@ -17,6 +17,7 @@ function App() {
   const [startSeason, setStartSeason] = useState('');
   const [endEp, setEndEp] = useState('');
   const [endSeason, setEndSeason] = useState('');
+  const [endDate, setEndDate] = useState(new Date());
 
 
   function keypress(ev) {
@@ -54,6 +55,9 @@ function App() {
             endSeason={endSeason}
             setEndSeason={setEndSeason}
             showEpisodes={showEpisodes}
+            endDate={endDate}
+            setEndDate={setEndDate}
+
           />
         }
         {
