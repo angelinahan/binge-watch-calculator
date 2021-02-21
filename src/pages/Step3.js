@@ -66,13 +66,26 @@ export const Step3 = ( props ) => {
                 <SentenceDiv>
                     <StyledH3>and your goal of watching until season {props.endSeason} episode {props.endEp}</StyledH3>
                 </SentenceDiv>
-                <SentenceDiv>
-                    <StyledH3>You will reach your goal on {props.endDate}</StyledH3>
+                </Step3Container>
+                {
+                    props.isFinishByDay &&
+                <Step3Container>
+                    <SentenceDiv>
+                    <StyledH3>You should watch approximetaly {props.rate} episodes per day in order reach your goal in watching these episodes of {props.show.name} by {props.endDate}.</StyledH3>
                 </SentenceDiv>
-                <SentenceDiv>
-                    <StyledH3>If you continue your current pace of watching {props.rate} episodes per day of {props.show.name}</StyledH3>
+                </Step3Container>
+                }
+                {
+                    !props.isFinishByDay && 
+                <Step3Container>
+                    <SentenceDiv>
+                    <StyledH3>You will reach your goal on {props.endDate} if you continue your current pace of watching {props.rate} episodes per day of {props.show.name}</StyledH3>
                 </SentenceDiv>
-            </Step3Container>
+                </Step3Container>
+                }
+
+                
+            
         </>
     )
 }

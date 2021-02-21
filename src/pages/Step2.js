@@ -103,7 +103,7 @@ export const Step2 = (props) => {
                     </SquareSelect>
                     <SquareSelect highlighted={!props.isFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
                         <h3>I want to watch this many episodes per day:</h3>
-                        <InputBox type="Number" onChange={(event) => props.setRate(event.target.value)}></InputBox>
+                        <InputBox type="Number" min="0" onChange={(event) => props.setRate(event.target.value)}></InputBox>
                     </SquareSelect>
                 </HorizontalDiv>
                 <HorizontalDiv>
