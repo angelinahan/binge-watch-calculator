@@ -24,7 +24,6 @@ function App() {
 
   useEffect(() => {
     setCanCalculate((startSeason && startEp && endEp && endSeason) && ((rate && !isFinishByDate) || (endDate && isFinishByDate)))
-    console.log(canCalculate);
   });
 
   return (

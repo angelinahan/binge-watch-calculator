@@ -19,6 +19,7 @@ const SearchBarDiv = styled.div`
 const SearchBar = styled.input`
     border-radius: 5px;
     width: 80%;
+    padding: 0px 15px;
 `
 
 const Button = styled.button`
@@ -74,9 +75,6 @@ export const Step1 = (props) => {
                 }}
                     hidden={!props.showId && props.results !== []}
                     disabled={!props.showId}>Next</Button>
-                {
-                    console.log(props.results)
-                }
             </Step1Container>
         </>
     )

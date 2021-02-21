@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { ResultRow } from '../components/ResultRow';
-import { searchShow } from '../tvService';
- 
+import { coral, purple } from '../colors';
+
 const Step3Container = styled.div`
     display: flex;
     margin: 20vh 5vw;
@@ -17,75 +16,71 @@ const HorizontalDiv = styled.div`
 
 const SentenceDiv = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: baseline;
-`
-
-const TVImage = styled.div`
-    height: 110%;
-    width: auto;
-    position: relative;
-    bottom: 10%;
-`
-
-const InputBox = styled.input`
-    border-radius: 5px;
-    width: 50%;
-`
-
-const InputNum = styled.input`
-    border-radius: 5px;
-    width: 10%;
 `
 
 const Button = styled.button`
     border-radius: 5px;
     height: 50px;
-    width: 20%;
-    background-color: aliceblue;
+    padding: 0px 100px;
+    background-color: ${coral};
 `
 
 const StyledH3 = styled.h3`
+    margin: 10px;
+`
+
+const HighlightResult = styled.span`
+    color: ${coral};
+    font-size: 30px;
+`
+
+const SecondaryHighlight = styled.span`
+    color: ${purple};
+`
+
+const ResultsContainer = styled.div`
+    width: 50%;
+    margin: 30px;
+    padding: 30px;
+`
+
+const ButtonContainer = styled.div`
 
 `
 
-const SquareSelect = styled.div`
-    border-radius: 5px;
-    background-color: aqua;
-`
-
-export const Step3 = ( props ) => {
+export const Step3 = (props) => {
     return (
         <>
             <Step3Container>
-            <HorizontalDiv>
+                <HorizontalDiv>
                     <h1>Results</h1>
                 </HorizontalDiv>
                 <SentenceDiv>
-                    <StyledH3>Based on your current position at season {props.startSeason} episode {props.startEp} </StyledH3>
+                    <StyledH3>Based on your current position at Season {props.startSeason} Episode {props.startEp} </StyledH3>
+                    <StyledH3>and your goal of watching through Season {props.endSeason} Episode {props.endEp}</StyledH3>
                 </SentenceDiv>
-                <SentenceDiv>
-                    <StyledH3>and your goal of watching until season {props.endSeason} episode {props.endEp}</StyledH3>
-                </SentenceDiv>
-                </Step3Container>
                 {
                     props.isFinishByDate &&
-                <Step3Container>
-                    <SentenceDiv>
-                    <StyledH3>You should watch approximately {props.rate} episodes per day in order reach your goal in watching these episodes of {props.show.name} by {props.endDate.toString()}.</StyledH3>
-                </SentenceDiv>
-                </Step3Container>
+                    <ResultsContainer>
+                        <SentenceDiv>
+                            <StyledH3>You should watch approximately <HighlightResult>{props.rate} episodes per day </HighlightResult> in order reach your goal in watching these episodes of {props.show.name} by {props.endDate.toString()}.</StyledH3>
+                        </SentenceDiv>
+                    </ResultsContainer>
                 }
                 {
-                    !props.isFinishByDate && 
-                <Step3Container>
-                    <SentenceDiv>
-                    <StyledH3>You will reach your goal on {props.endDate.toString()} if you continue your current pace of watching {props.rate} episodes per day of {props.show.name}</StyledH3>
-                </SentenceDiv>
-                </Step3Container>
+                    !props.isFinishByDate &&
+                    <ResultsContainer>
+                        <SentenceDiv>
+                            <StyledH3>You will reach your goal on <HighlightResult>{props.endDate.toString()}</HighlightResult> if you continue your current pace of watching {props.rate} episodes per day of {props.show.name}</StyledH3>
+                        </SentenceDiv>
+                    </ResultsContainer>
                 }
-
-                
-            
+                <ButtonContainer>
+                    <a href="https://bingewatchcalculator.netlify.app/"><Button>Search again!</Button></a>
+                </ButtonContainer>
+            </Step3Container>
         </>
     )
 }

@@ -24,8 +24,6 @@ const episodesSuffix = "/episodes"
 //With data from http://api.tvmaze.com/shows/{show_id}/episodes
 export async function showInfo(ID) {
     var idString = ID + ''
-    console.log(ID);
-    console.log(idString);
     let url = episodesPrefix + ID + episodesSuffix + ``;
     let result = await fetch(url).then(response => {
         return response.json();
@@ -125,7 +123,6 @@ function getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisode
     }
     startLength = showEpisodes[startSeason].length - startEpisode;
     for (let i = startSeason + 1; i < endSeason; i++) {
-        console.log(showEpisodes[i]);
         totalEpisodes += showEpisodes[i].length;
     }
     let endLength = endEpisode;
@@ -133,8 +130,6 @@ function getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisode
     totalEpisodes += endLength;
     totalEpisodes += 1;
     totalEpisodes *= 1.0;
-    console.log("Episode number:")
-    console.log(totalEpisodes);
     return totalEpisodes;
 }
 
@@ -160,9 +155,7 @@ export function find_end_date(startSeason, startEpisode, endSeason, endEpisode, 
 
 
 export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showEpisodes) {
-    console.log(showEpisodes);
     let totalEpisodes = getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes);
-    alert(totalEpisodes);
     let today = new Date();
     let tmw = addDays(today, 1);
     tmw = tmw.toISOString().slice(0,10);
@@ -172,12 +165,10 @@ export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode,
     const utc1 = Date.UTC(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
     const utc2 = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
     const dateDiff = Math.floor((utc2 - utc1) / _MS_PER_DAY) + 1;
-    //console.log(dateDiff);
     //alert("Time Frame: " + (Math.ceil((end.getTime() - tomorrow.getTime()) / 86400000) + 1));
     //alert("Time Frame: " + getTimeDiff(endDate));
     // let timeFrame = Math.floor((end.getTime() - tomorrow.getTime()) / 86400000);
     // let rate = totalEpisodes / timeFrame
-    alert(dateDiff);
     let rate = totalEpisodes / dateDiff;
     return rate;
 }

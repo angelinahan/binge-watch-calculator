@@ -22,8 +22,8 @@ const SentenceDiv = styled.div`
     align-items: baseline;
 `
 
-const TVImage = styled.div`
-    height: 110%;
+const TVImage = styled.img`
+    height: 70%;
     width: auto;
     position: relative;
     bottom: 10%;
@@ -81,7 +81,7 @@ export const Step2 = (props) => {
         <>
             <Step2Container>
                 <HorizontalDiv>
-                    {<TVImage src={props.show.image.medium}></TVImage>}
+                    {/* <TVImage src={props.show.image.medium}></TVImage> */}
                     <h1>{props.show.name}</h1>
                 </HorizontalDiv>
                 <SentenceDiv>
@@ -117,14 +117,10 @@ export const Step2 = (props) => {
                 </HorizontalDiv>
                 <HorizontalDiv>
                 <Button disabled={!props.canCalculate} onClick={() => {
-                    console.log("isFinishByDate:")
-                    console.log(props.isFinishByDate);
                     if (props.isFinishByDate) {
-                        console.log("finishing by")
                         props.setRate(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
                     }
                     else if (!props.isFinishByDate)  {
-                        console.log("giving rate")
                         props.setEndDate(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
                     }
                     props.setStep(3);
