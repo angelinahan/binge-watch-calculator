@@ -68,15 +68,15 @@ export const Step3 = ( props ) => {
                 </SentenceDiv>
                 </Step3Container>
                 {
-                    props.isFinishByDay &&
+                    props.isFinishByDate &&
                 <Step3Container>
                     <SentenceDiv>
-                    <StyledH3>You should watch approximetaly {props.rate} episodes per day in order reach your goal in watching these episodes of {props.show.name} by {props.endDate.toString()}.</StyledH3>
+                    <StyledH3>You should watch approximately {props.rate} episodes per day in order reach your goal in watching these episodes of {props.show.name} by {props.endDate.toString()}.</StyledH3>
                 </SentenceDiv>
                 </Step3Container>
                 }
                 {
-                    !props.isFinishByDay && 
+                    !props.isFinishByDate && 
                 <Step3Container>
                     <SentenceDiv>
                     <StyledH3>You will reach your goal on {props.endDate.toString()} if you continue your current pace of watching {props.rate} episodes per day of {props.show.name}</StyledH3>

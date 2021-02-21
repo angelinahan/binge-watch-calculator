@@ -5,7 +5,7 @@ import { charcoal, purple, coral } from '../colors';
 
 const Step2Container = styled.div`
     display: flex;
-    margin: 20vh 5vw;
+    margin: 10vh 5vw;
     flex-direction: column;
     align-items: center;
 `
@@ -14,7 +14,7 @@ const HorizontalDiv = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
-    margin: 50px 0px;
+    margin: 30px 0px;
 `
 
 const SentenceDiv = styled.div`

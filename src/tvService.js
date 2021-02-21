@@ -153,12 +153,13 @@ export function find_end_date(startSeason, startEpisode, endSeason, endEpisode, 
     }
     let today = new Date();
     let tomorrow = addDays(today, 1);
-    return addDays(tomorrow, days - 1);
+    let resultDay = addDays(tomorrow, days - 1);
+    resultDay = resultDay.toISOString().slice(0, 10);
+    return resultDay;
 }
 
 
 export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showEpisodes) {
-    
     console.log(showEpisodes);
     let totalEpisodes = getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes);
     alert(totalEpisodes);
