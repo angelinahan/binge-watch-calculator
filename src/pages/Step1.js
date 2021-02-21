@@ -63,8 +63,9 @@ export const Step1 = (props) => {
                     }
                 </ResultsDiv>
                 <Button onClick={() => {
-                    showInfo(props.showId);
+                    //showInfo(props.showId);
                     props.setStep(2);
+                    (showInfo(props.showId).then(data => props.setShowEpisodes(to_episodes_map(data))));
                 }}
                     hidden={!props.showId && props.results !== []}
                     disabled={!props.showId}>Next</Button>

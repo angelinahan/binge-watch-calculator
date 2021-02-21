@@ -43,7 +43,7 @@ function App() {
             setShow={setShow}/>
         }
         {
-          step === 2 && 
+          step === 2 &&
           <Step2
             show={show}
             startEp={startEp}
