@@ -71,6 +71,10 @@ export function to_episodes_map(data) {
 }
 
 function getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes) {
+    startSeason = parseInt(startSeason);
+    startEpisode= parseInt(startEpisode);
+    endSeason = parseInt(endSeason);
+    endEpisode= parseInt(endEpisode);
     startEpisode = startEpisode - 1;
     endEpisode = endEpisode - 1;
     let totalEpisodes = 0;
