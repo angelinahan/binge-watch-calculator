@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { searchShow, showInfo } from './tvService';
 import { Step1 } from './pages/Step1';
 import { Step2 } from './pages/Step2';
+import { Step3 } from './pages/Step3';
 
 function App() {
   const [query, setQuery] = useState("");
@@ -68,7 +69,15 @@ function App() {
         }
         {
           step === 3 &&
-          <p>Hi from Step 3</p>
+          <Step3
+            startEp={startEp}
+            startSeason={startSeason}
+            endEp={endEp}
+            endSeason={endSeason}
+            rate={rate}
+            endDate={endDate}
+            show={show}
+            />
         }
 
       </header>

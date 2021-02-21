@@ -121,7 +121,7 @@ export const Step2 = (props) => {
                         props.setDisplay(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
                     }
                     else if (props.isByEpisodes)  {
-                        props.setDisplay(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
+                        props.setEndDate(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
                     }
                     props.setStep(3);
                     }}>Calculate!</Button>
