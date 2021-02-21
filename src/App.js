@@ -21,6 +21,7 @@ function App() {
   const [isFinishByDate, setIsFinishByDate] = useState();
   const [rate, setRate] = useState();
   const [canCalculate, setCanCalculate] = useState(false);
+  const [display, setDisplay] = useState('');
 
 
   function keypress(ev) {
@@ -60,6 +61,7 @@ function App() {
             setStartSeason={setStartSeason}
             endEp={endEp}
             setEndEp={setEndEp}
+            setStep={setStep}
             endSeason={endSeason}
             setEndSeason={setEndSeason}
             showEpisodes={showEpisodes}
@@ -70,6 +72,7 @@ function App() {
             rate={rate}
             setRate={setRate}
             canCalculate={canCalculate}
+            setDisplay={setDisplay}
           />
         }
         {

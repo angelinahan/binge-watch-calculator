@@ -107,13 +107,14 @@ export const Step2 = (props) => {
                     </SquareSelect>
                 </HorizontalDiv>
                 <HorizontalDiv>
-                    <Button disabled={!props.canCalculate} onClick={() => {
-                        if (props.isByDate) {
-                            episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
-                        }
-                        else if (props.isByEpisodes) {
-                            find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes);
-                        }
+                <Button disabled={!props.canCalculate} onClick={() => {
+                    if (props.isByDate) {
+                        props.setDisplay(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
+                    }
+                    else if (props.isByEpisodes)  {
+                        props.setDisplay(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
+                    }
+                    props.setStep(3);
                     }}>Calculate!</Button>
                 </HorizontalDiv>
             </Step2Container>
