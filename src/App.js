@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { searchShow, showInfo } from './tvService';
 import { ResultRow } from './components/ResultRow';
 import { Step1 } from './pages/Step1';
@@ -18,6 +18,7 @@ function App() {
   const [endEp, setEndEp] = useState('');
   const [endSeason, setEndSeason] = useState('');
   const [endDate, setEndDate] = useState(new Date());
+  const [isFinishByDate, setIsFinishByDate] = useState(true);
 
 
   function keypress(ev) {
@@ -57,7 +58,8 @@ function App() {
             showEpisodes={showEpisodes}
             endDate={endDate}
             setEndDate={setEndDate}
-
+            isFinishByDate={isFinishByDate}
+            setIsFinishByDate={setIsFinishByDate}
           />
         }
         {

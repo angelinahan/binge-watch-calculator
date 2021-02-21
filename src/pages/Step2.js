@@ -54,9 +54,9 @@ const StyledH3 = styled.h3`
 
 `
 
-const SquareSelect = styled.div`
+const SquareSelect = styled.button`
     border-radius: 5px;
-    background-color: aqua;
+    background-color: ${props => (props.highlighted === 'true' ? 'pink' : 'transparent')};
 `
 
 export const Step2 = (props) => {
@@ -97,12 +97,15 @@ export const Step2 = (props) => {
                     }}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
-                    <SquareSelect onClick={() => props.setIsByDate(true)}>
+                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
                         <h3>I want to finish before this date:</h3>
                         <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
-                    <SquareSelect>
-                        <h3>I want to watch this many episodes per day:</h3>
+                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
+                        <h3>I want to watch this many episodes per day:</h3> 
+                        {
+                            console.log(props.setIsFinishByDate)
+                        }
                         <InputBox type="Number" Rate></InputBox>
                     </SquareSelect>
                 </HorizontalDiv>
