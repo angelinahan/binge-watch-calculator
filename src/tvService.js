@@ -35,13 +35,54 @@ export async function showInfo(ID) {
 
 
 
-
-function minutes_watched_minutes_left(data) {
-
+//Returns minutesWatched, minutesLeft
+//Untested :D
+function minutes_watched_minutes_left(startSeason, startEpisode, endSeason, endEpisode, showEpisodes) {
+    startSeason = parseInt(startSeason);
+    startEpisode= parseInt(startEpisode);
+    endSeason = parseInt(endSeason);
+    endEpisode= parseInt(endEpisode);
+    startEpisode = startEpisode - 1;
+    endEpisode = endEpisode - 1;
+    let minutesWatched = 0;
+    let minutesLeft = 0;
+    //Minutes watched
+    for (let season = 1; season <= startSeason; season++) {
+        if (season == startSeason) {
+            for (let episode = 0; episode < startEpisode; episode++) {
+                minutesWatched += showEpisodes[season][episode][1];
+            }
+        }
+        else {
+            for (let episode = 0; episode < showEpisodes[season].length; episode++) {
+                minutesWatched += showEpisodes[season][episode][1];
+            }
+        }
+    }
+    //Minutes Left
+    for (let season = startSeason; season <= endSeason; season++) {
+        if (startSeason == endSeason) {
+            for (let episode = startEpisode; episode <= endEpisode; episode++) {
+                minutesLeft += showEpisodes[season][episode][1];
+            }
+        }
+        else if (season == startSeason) {
+            for (let episode = startEpisode; episode < showEpisodes[season].length; episode++) {
+                minutesLeft += showEpisodes[season][episode][1];
+            }
+        }
+        else {
+            for (let episode = 0; episode <= endEpisode; episode++) {
+                minutesLeft += showEpisodes[season][episode][1];
+            }
+        }
+    }
+    return [minutesWatched, minutesLeft];
 }
 
-function percentage_watched(data) {
-
+function percentage_watched(startSeason, startEpisode, endSeason, endEpisode, showEpisodes) {
+    let stats = minutes_watched_minutes_left(startSeason, startEpisode, endSeason, endEpisode, showEpisodes);
+    return stats[0] / stats[1];
 }
 
 //I have an idea of this data structure
