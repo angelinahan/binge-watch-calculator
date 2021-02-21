@@ -40,9 +40,6 @@ export const ResultRow = ({ show, selectedShowId, setShowId, setShow }) => {
                 {setShowId(show.id);
                 setShow(show);
             }} >
-                {
-                    console.log(selectedShowId === show.id)
-                }
                 <ResultImage src={imageUrl}></ResultImage>
                 <p>{show.name}</p>
                 <p>{year}</p>

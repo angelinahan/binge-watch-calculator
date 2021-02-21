@@ -48,7 +48,7 @@ function minutes_watched_minutes_left(startSeason, startEpisode, endSeason, endE
     let minutesLeft = 0;
     //Minutes watched
     for (let season = 1; season <= startSeason; season++) {
-        if (season == startSeason) {
+        if (season === startSeason) {
             for (let episode = 0; episode < startEpisode; episode++) {
                 minutesWatched += showEpisodes[season][episode][1];
             }
@@ -61,12 +61,12 @@ function minutes_watched_minutes_left(startSeason, startEpisode, endSeason, endE
     }
     //Minutes Left
     for (let season = startSeason; season <= endSeason; season++) {
-        if (startSeason == endSeason) {
+        if (startSeason === endSeason) {
             for (let episode = startEpisode; episode <= endEpisode; episode++) {
                 minutesLeft += showEpisodes[season][episode][1];
             }
         }
-        else if (season == startSeason) {
+        else if (season === startSeason) {
             for (let episode = startEpisode; episode < showEpisodes[season].length; episode++) {
                 minutesLeft += showEpisodes[season][episode][1];
             }
@@ -113,13 +113,17 @@ export function to_episodes_map(data) {
 
 function getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes) {
     startSeason = parseInt(startSeason);
-    startEpisode= parseInt(startEpisode);
+    startEpisode = parseInt(startEpisode);
     endSeason = parseInt(endSeason);
     endEpisode= parseInt(endEpisode);
     startEpisode = startEpisode - 1;
     endEpisode = endEpisode - 1;
     let totalEpisodes = 0;
-    let startLength = showEpisodes[startSeason].length - startEpisode;
+    let startLength = 0;
+    if (startSeason === endSeason) {
+        return (endEpisode - startEpisode + 1) * 1.0;
+    }
+    startLength = showEpisodes[startSeason].length - startEpisode;
     for (let i = startSeason + 1; i < endSeason; i++) {
         console.log(showEpisodes[i]);
         totalEpisodes += showEpisodes[i].length;
@@ -127,9 +131,13 @@ function getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisode
     let endLength = endEpisode;
     totalEpisodes += startLength;
     totalEpisodes += endLength;
+    totalEpisodes += 1;
     totalEpisodes *= 1.0;
+    console.log("Episode number:")
+    console.log(totalEpisodes);
     return totalEpisodes;
 }
+
 
 function addDays(date, days) {
     var result = new Date(date);
@@ -144,20 +152,61 @@ export function find_end_date(startSeason, startEpisode, endSeason, endEpisode, 
         days = Math.ceil(totalEps / numPerDay);
     }
     let today = new Date();
-    return addDays(today, days);
+    let tomorrow = addDays(today, 1);
+    return addDays(tomorrow, days - 1);
 }
 
 
 export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showEpisodes) {
+    
     console.log(showEpisodes);
     let totalEpisodes = getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes);
+    alert(totalEpisodes);
     let today = new Date();
+    let tmw = addDays(today, 1);
+    tmw = tmw.toISOString().slice(0,10);
+    let tomorrow = new Date(tmw);
     let end = new Date(endDate);
-    let timeFrame = end.getTime() - today.getTime();
-    let rate = totalEpisodes / timeFrame
+    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+    const utc1 = Date.UTC(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate());
+    const utc2 = Date.UTC(end.getFullYear(), end.getMonth(), end.getDate());
+    const dateDiff = Math.floor((utc2 - utc1) / _MS_PER_DAY) + 1;
+    //console.log(dateDiff);
+    //alert("Time Frame: " + (Math.ceil((end.getTime() - tomorrow.getTime()) / 86400000) + 1));
+    //alert("Time Frame: " + getTimeDiff(endDate));
+    // let timeFrame = Math.floor((end.getTime() - tomorrow.getTime()) / 86400000);
+    // let rate = totalEpisodes / timeFrame
+    alert(dateDiff);
+    let rate = totalEpisodes / dateDiff;
     return rate;
 }
 
+/*
+function getTimeDiff(endDate) {
+    let today = new Date();
+    let tmw = addDays(today, 1);
+    let tomorrowNew = new Date(tmw.getYear(), tmw.getMonth(), tmw.getDate());
+    let endDateNew = new Date(endDate.getYear(), endDate.getMonth(), endDate.getDate());
+    let millisecondsPerDay = 1000 * 60 * 60 * 24;
+    let millisBetween = endDateNew.getTime() - tomorrowNew.getTime();
+    let days = millisBetween / millisecondsPerDay;
+    return Math.floor(days) + 1;
+}*/
+
+// const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+// // a and b are javascript Date objects
+// function dateDiffInDays(a, b) {
+//   // Discard the time and time-zone information.
+
+
+
+// }
+
+// // test it
+// const a = new Date("2017-01-01"),
+//     b = new Date("2017-07-25"),
+//     difference = dateDiffInDays(a, b);
 
 
 

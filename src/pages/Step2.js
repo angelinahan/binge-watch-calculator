@@ -95,7 +95,7 @@ export const Step2 = (props) => {
                         onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
                 </SentenceDiv>
                 <SentenceDiv>
-                    <StyledH3>I want to watch until Season&nbsp;</StyledH3>
+                    <StyledH3>I want to watch through Season&nbsp;</StyledH3>
                     <InputNum
                         value={props.endSeason}
                         onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
@@ -107,20 +107,24 @@ export const Step2 = (props) => {
                 <StyledH2>Select an option:</StyledH2>
                 <HorizontalDiv>
                     <SquareSelect highlighted={props.isFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
-                        <h3>I want to finish before this date:</h3>
+                        <h3>I want to finish on this date:</h3>
                         <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
                     <SquareSelect highlighted={!props.isFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
                         <h3>I want to watch this many episodes per day:</h3>
-                        <InputBox type="Number" min="0" onChange={(event) => props.setRate(event.target.value)}></InputBox>
+                        <InputBox type="Number" min="1" onChange={(event) => props.setRate(event.target.value)}></InputBox>
                     </SquareSelect>
                 </HorizontalDiv>
                 <HorizontalDiv>
                 <Button disabled={!props.canCalculate} onClick={() => {
-                    if (props.isByDate) {
-                        props.setDisplay(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
+                    console.log("isFinishByDate:")
+                    console.log(props.isFinishByDate);
+                    if (props.isFinishByDate) {
+                        console.log("finishing by")
+                        props.setRate(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
                     }
-                    else if (props.isByEpisodes)  {
+                    else if (!props.isFinishByDate)  {
+                        console.log("giving rate")
                         props.setEndDate(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
                     }
                     props.setStep(3);

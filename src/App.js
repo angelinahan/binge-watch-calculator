@@ -23,7 +23,7 @@ function App() {
   const [display, setDisplay] = useState('');
 
   useEffect(() => {
-    setCanCalculate((startSeason && startEp && endEp && endSeason) && ((rate && !isFinishByDate) || (endDate && isFinishByDate)));
+    setCanCalculate((startSeason && startEp && endEp && endSeason) && ((rate && !isFinishByDate) || (endDate && isFinishByDate)))
     console.log(canCalculate);
   });
 
@@ -71,6 +71,7 @@ function App() {
           step === 3 &&
           <Step3
             startEp={startEp}
+            isFinishByDate={isFinishByDate}
             startSeason={startSeason}
             endEp={endEp}
             endSeason={endSeason}
