@@ -89,22 +89,23 @@ export const Step2 = (props) => {
                 </SentenceDiv>
                 <Button onClick={() => {
                     if (props.isByDate) {
-                        episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
+                        props.setDisplay(episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes));
                     }
                     else if (props.isByEpisodes)  {
-                        find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes);
+                        props.setDisplay(find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes));
                     }
+                    props.setStep(3);
                     }}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
-                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
+                    <SquareSelect highlighted={props.isFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
                         <h3>I want to finish before this date:</h3>
                         <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
-                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
+                    <SquareSelect highlighted={props.isFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
                         <h3>I want to watch this many episodes per day:</h3> 
                         {
-                            console.log(props.setIsFinishByDate)
+                            console.log(props.isFinishByDate)
                         }
                         <InputBox type="Number" Rate></InputBox>
                     </SquareSelect>

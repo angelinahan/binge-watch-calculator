@@ -19,6 +19,7 @@ function App() {
   const [endSeason, setEndSeason] = useState('');
   const [endDate, setEndDate] = useState(new Date());
   const [isFinishByDate, setIsFinishByDate] = useState(true);
+  const [display, setDisplay] = useState('');
 
 
   function keypress(ev) {
@@ -53,6 +54,7 @@ function App() {
             setStartSeason={setStartSeason}
             endEp={endEp}
             setEndEp={setEndEp}
+            setStep={setStep}
             endSeason={endSeason}
             setEndSeason={setEndSeason}
             showEpisodes={showEpisodes}
@@ -60,6 +62,7 @@ function App() {
             setEndDate={setEndDate}
             isFinishByDate={isFinishByDate}
             setIsFinishByDate={setIsFinishByDate}
+            setDisplay={setDisplay}
           />
         }
         {
