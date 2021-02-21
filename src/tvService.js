@@ -70,8 +70,7 @@ export function to_episodes_map(data) {
     return results;
 }
 
-
-export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showInfo) {
+function getAllEps(startSeason, startEpisode, endSeason, endEpisode) {
     let totalEpisodes = 0;
     let startLength = showInfo[startSeason].length - startEpisode;
     for (let i = startSeason + 1; i < endSeason; i++) {
@@ -81,6 +80,12 @@ export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode,
     totalEpisodes += startLength;
     totalEpisodes += endLength;
     totalEpisodes *= 1.0;
+    return totalEpisodes;
+}
+
+
+export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showInfo) {
+    let totalEpisodes = getAllEps(startSeason, startEpisode, endSeason, endEpisode);
     let today = new Date();
     let end = new Date(endDate);
     let timeFrame = end.getTime() - today.getTime();

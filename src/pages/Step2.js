@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
-import { searchShow } from '../tvService';
+import { episodesPerDay } from '../tvService';
  
 const Step2Container = styled.div`
     display: flex;
@@ -68,7 +68,7 @@ export const Step2 = ( props ) => {
                 <InputNum 
                 value={props.endEp}
                 onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
-                <Button>Calculate!</Button>
+                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, endDate, props.show)}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
                     <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
