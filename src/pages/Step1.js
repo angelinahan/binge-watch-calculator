@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
 import { searchShow, showInfo, to_episodes_map } from '../tvService';
-import { coral } from '../colors'
+import { coral } from '../colors';
+import tvImage from '../images/tv.png'
 
 const Step1Container = styled.div`
     display: flex;
@@ -41,6 +42,11 @@ const ResultsDiv = styled.div`
     justify-content: center;
 `
 
+const IconImage = styled.img`
+    height: 40vh;
+    width: auto;
+`
+
 export const Step1 = (props) => {
     return (
         <>
@@ -57,6 +63,10 @@ export const Step1 = (props) => {
                         props.results.length === 0 &&
                         <p>No shows found :( Try again</p>
                     } */}
+                    {
+                        props.results.length === 0 &&
+                        <IconImage src={tvImage}></IconImage>
+                    }
                     {
                         props.results.map(result =>
                             <ResultRow

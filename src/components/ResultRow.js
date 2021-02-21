@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
 import styled from 'styled-components';
 import { coral, purple } from '../colors';
+import defaultMovie from '../images/default-movie.png'
 
 const ResultDiv = styled.div`
 display: flex;
@@ -26,7 +26,7 @@ const ResultImage = styled.img`
 `
 
 export const ResultRow = ({ show, selectedShowId, setShowId, setShow }) => {
-    let imageUrl = "https://media.comicbook.com/files/img/default-movie.png";
+    let imageUrl = defaultMovie;
     if (show.image) {
         imageUrl = show.image.medium;
     };
