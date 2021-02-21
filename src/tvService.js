@@ -92,8 +92,8 @@ function addDays(date, days) {
     return result;
   }
 
-function find_end_date(startSeason, startEpisode, endSeason, endEpisode, numPerDay) {
-    let totalEps = getAllEps(startSeason, startEpisode, endSeason, endEpisode);
+function find_end_date(startSeason, startEpisode, endSeason, endEpisode, numPerDay, showEpisodes) {
+    let totalEps = getAllEps(startSeason, startEpisode, endSeason, endEpisode, showEpisodes);
     let days = Math.ceil(totalEps / numPerDay);
     let today = new Date();
     return addDays(today, days);

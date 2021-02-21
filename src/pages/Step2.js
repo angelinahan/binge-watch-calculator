@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
-import { episodesPerDay } from '../tvService';
+import { episodesPerDay, find_end_date } from '../tvService';
  
 const Step2Container = styled.div`
     display: flex;
@@ -68,10 +68,17 @@ export const Step2 = ( props ) => {
                 <InputNum 
                 value={props.endEp}
                 onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
-                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes)}>Calculate!</Button>
+                <Button onClick={() => {
+                    if (props.isByDate) {
+                        episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
+                    }
+                    else if (props.isByEpisodes)  {
+                        find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes);
+                    }
+                    }}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
-                    <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
+                    <SquareSelect onClick={() => props.setIsByDate(true)}>
                         <h3>I want to finish before this date:</h3>
                         <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
