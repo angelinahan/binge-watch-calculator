@@ -92,7 +92,7 @@ export const Step2 = (props) => {
                 <HorizontalDiv>
                     <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
                         <h3>I want to finish before this date:</h3>
-                        <InputBox type="date" id="Watch By"></InputBox>
+                        <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
                     <SquareSelect>
                         <h3>I want to watch this many episodes per day:</h3>
