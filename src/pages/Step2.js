@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
 import { episodesPerDay, find_end_date } from '../tvService';
- 
+
 const Step2Container = styled.div`
     display: flex;
     margin: 20vh 5vw;
@@ -13,6 +13,7 @@ const HorizontalDiv = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
+    margin: 50px 0px;
 `
 
 const SentenceDiv = styled.div`
@@ -46,7 +47,7 @@ const InputNum = styled.input`
 const Button = styled.button`
     border-radius: 5px;
     height: 50px;
-    width: 20%;
+    padding: 0px 100px;
     background-color: aliceblue;
 `
 
@@ -54,9 +55,16 @@ const StyledH3 = styled.h3`
 
 `
 
-const SquareSelect = styled.button`
+const SquareSelect = styled.div`
     border-radius: 5px;
-    background-color: ${props => (props.highlighted === 'true' ? 'pink' : 'transparent')};
+    padding: 10px;
+    width: 45%;
+    cursor: pointer;
+    border: none;
+    &:hover {
+        border: 2px solid aliceblue;
+    }
+    background-color: ${props => (props.highlighted ? 'aliceblue' : 'transparent')};
 `
 
 export const Step2 = (props) => {
@@ -78,36 +86,35 @@ export const Step2 = (props) => {
                         onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
                 </SentenceDiv>
                 <SentenceDiv>
-                <StyledH3>I want to watch until season&nbsp;</StyledH3>
-                <InputNum
-                    value={props.endSeason}
-                    onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
-                <StyledH3>&nbsp;episode&nbsp;</StyledH3>
-                <InputNum
-                    value={props.endEp}
-                    onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
+                    <StyledH3>I want to watch until season&nbsp;</StyledH3>
+                    <InputNum
+                        value={props.endSeason}
+                        onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
+                    <StyledH3>&nbsp;episode&nbsp;</StyledH3>
+                    <InputNum
+                        value={props.endEp}
+                        onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
                 </SentenceDiv>
-                <Button onClick={() => {
-                    if (props.isByDate) {
-                        episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
-                    }
-                    else if (props.isByEpisodes)  {
-                        find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes);
-                    }
-                    }}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
-                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
+                    <SquareSelect highlighted={props.isFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
                         <h3>I want to finish before this date:</h3>
                         <InputBox type="date" id="Watch By" onChange={(event) => props.setEndDate(event.target.value)}></InputBox>
                     </SquareSelect>
-                    <SquareSelect highlighted={props.setIsFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
-                        <h3>I want to watch this many episodes per day:</h3> 
-                        {
-                            console.log(props.setIsFinishByDate)
-                        }
-                        <InputBox type="Number" Rate></InputBox>
+                    <SquareSelect highlighted={!props.isFinishByDate} onClick={() => props.setIsFinishByDate(false)}>
+                        <h3>I want to watch this many episodes per day:</h3>
+                        <InputBox type="Number" onChange={(event) => props.setRate(event.target.value)}></InputBox>
                     </SquareSelect>
+                </HorizontalDiv>
+                <HorizontalDiv>
+                    <Button disabled={!props.canCalculate} onClick={() => {
+                        if (props.isByDate) {
+                            episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
+                        }
+                        else if (props.isByEpisodes) {
+                            find_end_date(props.startSeason, props.startEp, props.endSeason, props.endEp, props.rate, props.showEpisodes);
+                        }
+                    }}>Calculate!</Button>
                 </HorizontalDiv>
             </Step2Container>
         </>

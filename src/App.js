@@ -17,8 +17,10 @@ function App() {
   const [startSeason, setStartSeason] = useState('');
   const [endEp, setEndEp] = useState('');
   const [endSeason, setEndSeason] = useState('');
-  const [endDate, setEndDate] = useState(new Date());
-  const [isFinishByDate, setIsFinishByDate] = useState(true);
+  const [endDate, setEndDate] = useState();
+  const [isFinishByDate, setIsFinishByDate] = useState();
+  const [rate, setRate] = useState();
+  const [canCalculate, setCanCalculate] = useState(false);
 
 
   function keypress(ev) {
@@ -26,6 +28,11 @@ function App() {
       searchShow(query)
     }
   }
+
+  useEffect(() => {
+    setCanCalculate((startSeason && startEp && endEp && endSeason) && ((rate && !isFinishByDate) || (endDate && isFinishByDate)));
+    console.log(canCalculate);
+  });
 
   return (
     <div className="App">
@@ -60,6 +67,9 @@ function App() {
             setEndDate={setEndDate}
             isFinishByDate={isFinishByDate}
             setIsFinishByDate={setIsFinishByDate}
+            rate={rate}
+            setRate={setRate}
+            canCalculate={canCalculate}
           />
         }
         {
