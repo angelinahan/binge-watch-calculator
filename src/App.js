@@ -53,6 +53,7 @@ function App() {
             setEndEp={setEndEp}
             endSeason={endSeason}
             setEndSeason={setEndSeason}
+            showEpisodes={showEpisodes}
           />
         }
         {

@@ -68,7 +68,7 @@ export const Step2 = ( props ) => {
                 <InputNum 
                 value={props.endEp}
                 onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
-                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, endDate, props.show)}>Calculate!</Button>
+                <Button onClick={() => episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, endDate, props.showEpisodes)}>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
                     <SquareSelect /*onClick={() => props.setIsByDate(true)}*/>
