@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import { searchShow, showInfo } from './tvService';
-import { ResultRow } from './components/ResultRow';
 import { Step1 } from './pages/Step1';
 import { Step2 } from './pages/Step2';
 import { Step3 } from './pages/Step3';
@@ -23,13 +21,6 @@ function App() {
   const [rate, setRate] = useState();
   const [canCalculate, setCanCalculate] = useState(false);
   const [display, setDisplay] = useState('');
-
-
-  function keypress(ev) {
-    if (ev.key === "Enter") {
-      searchShow(query)
-    }
-  }
 
   useEffect(() => {
     setCanCalculate((startSeason && startEp && endEp && endSeason) && ((rate && !isFinishByDate) || (endDate && isFinishByDate)));

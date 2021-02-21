@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
 import { episodesPerDay, find_end_date } from '../tvService';
+import { charcoal, purple, coral } from '../colors';
 
 const Step2Container = styled.div`
     display: flex;
@@ -41,18 +42,23 @@ const InputNum = styled.input`
     font-size: 30px;
     background-color: transparent;
     color: white;
-    border: 1pt solid white;
+    border: 2px solid ${charcoal};
 `
 
 const Button = styled.button`
     border-radius: 5px;
     height: 50px;
     padding: 0px 100px;
-    background-color: aliceblue;
+    background-color: ${coral};
 `
 
 const StyledH3 = styled.h3`
 
+`
+
+const StyledH2 = styled.h2`
+    justify-self: start;
+    //align-self: start;
 `
 
 const SquareSelect = styled.div`
@@ -60,11 +66,14 @@ const SquareSelect = styled.div`
     padding: 10px;
     width: 45%;
     cursor: pointer;
-    border: none;
-    &:hover {
-        border: 2px solid aliceblue;
+    border: 2px solid ${charcoal};
+    &:disabled {
+        opacity: 0.5;
     }
-    background-color: ${props => (props.highlighted ? 'aliceblue' : 'transparent')};
+    &:hover {
+        border: 2px solid ${purple};
+    }
+    background-color: ${props => (props.highlighted ? '#7d4e57ff' : 'transparent')};
 `
 
 export const Step2 = (props) => {
@@ -76,26 +85,26 @@ export const Step2 = (props) => {
                     <h1>{props.show.name}</h1>
                 </HorizontalDiv>
                 <SentenceDiv>
-                    <StyledH3>I am about to start season&nbsp;</StyledH3>
+                    <StyledH3>I am about to start Season&nbsp;</StyledH3>
                     <InputNum
                         value={props.startSeason}
                         onChange={(event) => props.setStartSeason(event.target.value)}></InputNum>
-                    <StyledH3>&nbsp;episode&nbsp;</StyledH3>
+                    <StyledH3>&nbsp;Episode&nbsp;</StyledH3>
                     <InputNum
                         value={props.startEp}
                         onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
                 </SentenceDiv>
                 <SentenceDiv>
-                    <StyledH3>I want to watch until season&nbsp;</StyledH3>
+                    <StyledH3>I want to watch until Season&nbsp;</StyledH3>
                     <InputNum
                         value={props.endSeason}
                         onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
-                    <StyledH3>&nbsp;episode&nbsp;</StyledH3>
+                    <StyledH3>&nbsp;Episode&nbsp;</StyledH3>
                     <InputNum
                         value={props.endEp}
                         onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
                 </SentenceDiv>
-                <p>Select an option:</p>
+                <StyledH2>Select an option:</StyledH2>
                 <HorizontalDiv>
                     <SquareSelect highlighted={props.isFinishByDate} onClick={() => props.setIsFinishByDate(true)}>
                         <h3>I want to finish before this date:</h3>
