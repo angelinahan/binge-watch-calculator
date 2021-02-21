@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import styled from 'styled-components';
+import { coral, purple } from '../colors';
 
 const ResultDiv = styled.div`
 display: flex;
@@ -12,7 +13,7 @@ display: flex;
     border-radius: 5px;
     cursor: pointer;
     &:hover {
-        background-color: pink;
+        background-color: ${purple};
         transition: 0.3s background-color;
     }
     background-color: ${props => (props.selected ? props.selected : 'none')};
@@ -35,7 +36,7 @@ export const ResultRow = ({ show, selectedShowId, setShowId, setShow }) => {
     }
     return (
         <>
-            <ResultDiv selected={selectedShowId === show.id ? 'pink' : 'none'} onClick={() => 
+            <ResultDiv selected={selectedShowId === show.id ? '#7d4e57ff' : 'none'} onClick={() => 
                 {setShowId(show.id);
                 setShow(show);
             }} >

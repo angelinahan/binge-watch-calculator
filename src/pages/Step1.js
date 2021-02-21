@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { ResultRow } from '../components/ResultRow';
-import { searchShow, showInfo,to_episodes_map } from '../tvService';
- 
+import { searchShow, showInfo, to_episodes_map } from '../tvService';
+import { coral } from '../colors'
+
 const Step1Container = styled.div`
     display: flex;
     margin: 20vh 0;
@@ -24,7 +25,7 @@ const Button = styled.button`
     border-radius: 5px;
     height: 50px;
     width: 20%;
-    background-color: aliceblue;
+    background-color: ${coral};
 `
 
 const ResultsDiv = styled.div`
@@ -43,7 +44,7 @@ export const Step1 = (props) => {
     return (
         <>
             <Step1Container>
-                <p>Search and select your show to begin:</p>
+                <h1>Search and select your show to begin:</h1>
                 <SearchBarDiv>
                     <SearchBar size="50"
                         onChange={(event) => props.setQuery(event.target.value)}
@@ -51,6 +52,10 @@ export const Step1 = (props) => {
                     <Button onClick={() => searchShow(props.query).then(data => props.setSearchResults(data))}>Search</Button>
                 </SearchBarDiv>
                 <ResultsDiv>
+                    {/* {
+                        props.results.length === 0 &&
+                        <p>No shows found :( Try again</p>
+                    } */}
                     {
                         props.results.map(result =>
                             <ResultRow
