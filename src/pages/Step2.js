@@ -27,6 +27,11 @@ const InputBox = styled.input`
     width: 50%;
 `
 
+const InputNum = styled.input`
+    border-radius: 5px;
+    width: 10%;
+`
+
 const Button = styled.button`
     border-radius: 5px;
     height: 50px;
@@ -48,21 +53,21 @@ export const Step2 = ( props ) => {
                     <h2>{props.show.name}</h2>
                 </HorizontalDiv>
                 <p>I am about to start season</p>
-                <InputBox 
+                <InputNum
                 value={props.startSeason}
-                onChange={(event) => props.setStartSeason(event.target.value)}></InputBox>
+                onChange={(event) => props.setStartSeason(event.target.value)}></InputNum>
                 <p>episode</p>
-                <InputBox 
+                <InputNum 
                 value={props.startEp}
-                onChange={(event) => props.setStartEp(event.target.value)}></InputBox>
+                onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
                 <p>I want to watch until season</p>
-                <InputBox 
+                <InputNum 
                 value={props.endSeason}
-                onChange={(event) => props.setEndSeason(event.target.value)}></InputBox>
+                onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
                 <p>episode</p>
-                <InputBox 
+                <InputNum 
                 value={props.endEp}
-                onChange={(event) => props.setEndEp(event.target.value)}></InputBox>
+                onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
                 <Button>Calculate!</Button>
                 <p>Select an option:</p>
                 <HorizontalDiv>
