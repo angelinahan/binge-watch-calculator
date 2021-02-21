@@ -1,6 +1,6 @@
 //format: /search/shows?q=:query
 
-const searchUrl = "http://api.tvmaze.com/search/shows?q=";
+const searchUrl = "https://api.tvmaze.com/search/shows?q=";
 
 const showUrl = "";
 
@@ -18,7 +18,7 @@ export async function searchShow(query) {
     return result;
 }
 
-const episodesPrefix = "http://api.tvmaze.com/shows/"
+const episodesPrefix = "https://api.tvmaze.com/shows/"
 const episodesSuffix = "/episodes"
 
 //With data from http://api.tvmaze.com/shows/{show_id}/episodes
