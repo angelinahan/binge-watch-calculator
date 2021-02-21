@@ -15,6 +15,11 @@ const HorizontalDiv = styled.div`
     position: relative;
 `
 
+const SentenceDiv = styled.div`
+    display: flex;
+    align-items: baseline;
+`
+
 const TVImage = styled.div`
     height: 110%;
     width: auto;
@@ -29,7 +34,13 @@ const InputBox = styled.input`
 
 const InputNum = styled.input`
     border-radius: 5px;
-    width: 10%;
+    width: 3.5rem;
+    height: 1em;
+    padding: 5px;
+    font-size: 30px;
+    background-color: transparent;
+    color: white;
+    border: 1pt solid white;
 `
 
 const Button = styled.button`
@@ -39,35 +50,43 @@ const Button = styled.button`
     background-color: aliceblue;
 `
 
+const StyledH3 = styled.h3`
+
+`
+
 const SquareSelect = styled.div`
     border-radius: 5px;
     background-color: aqua;
 `
 
-export const Step2 = ( props ) => {
+export const Step2 = (props) => {
     return (
         <>
             <Step2Container>
                 <HorizontalDiv>
                     {<TVImage src={props.show.image.medium}></TVImage>}
-                    <h2>{props.show.name}</h2>
+                    <h1>{props.show.name}</h1>
                 </HorizontalDiv>
-                <p>I am about to start season</p>
+                <SentenceDiv>
+                    <StyledH3>I am about to start season&nbsp;</StyledH3>
+                    <InputNum
+                        value={props.startSeason}
+                        onChange={(event) => props.setStartSeason(event.target.value)}></InputNum>
+                    <StyledH3>&nbsp;episode&nbsp;</StyledH3>
+                    <InputNum
+                        value={props.startEp}
+                        onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
+                </SentenceDiv>
+                <SentenceDiv>
+                <StyledH3>I want to watch until season&nbsp;</StyledH3>
                 <InputNum
-                value={props.startSeason}
-                onChange={(event) => props.setStartSeason(event.target.value)}></InputNum>
-                <p>episode</p>
-                <InputNum 
-                value={props.startEp}
-                onChange={(event) => props.setStartEp(event.target.value)}></InputNum>
-                <p>I want to watch until season</p>
-                <InputNum 
-                value={props.endSeason}
-                onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
-                <p>episode</p>
-                <InputNum 
-                value={props.endEp}
-                onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
+                    value={props.endSeason}
+                    onChange={(event) => props.setEndSeason(event.target.value)}></InputNum>
+                <StyledH3>&nbsp;episode&nbsp;</StyledH3>
+                <InputNum
+                    value={props.endEp}
+                    onChange={(event) => props.setEndEp(event.target.value)}></InputNum>
+                </SentenceDiv>
                 <Button onClick={() => {
                     if (props.isByDate) {
                         episodesPerDay(props.startSeason, props.startEp, props.endSeason, props.endEp, props.endDate, props.showEpisodes);
