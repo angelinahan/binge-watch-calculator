@@ -83,6 +83,19 @@ function getAllEps(startSeason, startEpisode, endSeason, endEpisode) {
     return totalEpisodes;
 }
 
+function addDays(date, days) {
+    var result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+function find_end_date(startSeason, startEpisode, endSeason, endEpisode, numPerDay) {
+    let totalEps = getAllEps(startSeason, startEpisodes, endSeason, endEpisode);
+    let days = Math.ceil(totalEps / numPerDay);
+    let today = new Date();
+    return addDays(today, days);
+}
+
 
 export function episodesPerDay(startSeason, startEpisode, endSeason, endEpisode, endDate, showInfo) {
     let totalEpisodes = getAllEps(startSeason, startEpisode, endSeason, endEpisode);
